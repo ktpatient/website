@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="styles/animations/spin.css">
         <link rel="stylesheet" href="styles/animations/colorChange.css">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=content_copy" /> <!-- Material Symbols -->
+
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -28,92 +30,97 @@
             }
 
             .contact-container {
-        max-width: 600px;
-        margin: 80px auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-    }
+                max-width: 600px;
+                margin: 80px auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+            }
 
-    .contact-container h2 {
-        text-align: center;
-        color: #333;
-    }
+            .contact-container h2 {
+                text-align: center;
+                color: #333;
+            }
 
-    .contact-container p {
-        text-align: center;
-        color: #666;
-        margin-bottom: 20px;
-    }
+            .contact-container p {
+                text-align: center;
+                color: #666;
+                margin-bottom: 20px;
+            }
 
-    .contact-form {
-        display: flex;
-        flex-direction: column;
-    }
+            .email-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
 
-    .contact-form label {
-        margin-bottom: 5px;
-        color: #333;
-    }
+            .email-text {
+                margin-right: 10px;
+                font-weight: bold;
+                color: #007BFF;
+            }
 
-    .contact-form input, .contact-form textarea {
-        margin-bottom: 15px;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-size: 1em;
-    }
+            .copy-button {
+                padding: 6px 8px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007BFF;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.2s;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                margin-left: 5px;
+            }
 
-    .contact-form button {
-        padding: 12px;
-        border: none;
-        border-radius: 5px;
-        background-color: #0073e6;
-        color: white;
-        font-size: 1em;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+            .copy-button:hover {
+                background-color: #0056b3;
+            }
 
-    .contact-form button:hover {
-        background-color: #005bb5;
-    }
+            .copy-button:active {
+                background-color: #003d80;
+                transform: scale(0.95); 
+            }
 
-          </style>
+            .business-message {
+                text-align: center;
+                color: #666;
+                margin-top: 20px;
+                font-style: italic;
+            }
+
+        </style>
     </head>
     <body>
         <header class="header">
-            <div class="logo">Website</div>
+            <a class="logo" href="index.html">Website</a>
             <nav class="nav-links">
-                <a href="index.php">Home</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="#contact">Contact</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </header>
         
         <div class="contact-container">
             <h2>Contact Me</h2>
-            <p>If you have any questions or would like to discuss a project, please feel free to reach out using the form below.</p>
-
-            <div id="response-message" style="display: none;"></div>
-
-            <form class="contact-form" id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Your Name">
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required placeholder="Your Email">
-                
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" required placeholder="Subject">
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="6" required placeholder="Your Message"></textarea>
-                
-                <button type="submit">Send Message</button>
-            </form>
+            <p>If you have any questions or would like to discuss a project, please feel free to reach out to me with the email below.</p>
+    
+            <div class="email-container">
+                <span class="email-text" id="email">kit.t.patient@gmail.com</span>
+                <button class="copy-button" onclick="copyToClipboard(this)">
+                    <span class="material-symbols-outlined">content_copy</span> <!-- Icon for copy -->
+                </button>
+            </div>
+    
+            <p class="business-message">We strive to respond as quickly as possible to all inquiries.</p>
         </div>
 
         <footer class="footer">
@@ -123,36 +130,17 @@
 
         <script type="text/javascript" src="scripts/darkmode.js"></script>
         <script>
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault();
+            function copyToClipboard(button) {
+                const emailText = document.getElementById("email").innerText;
+                navigator.clipboard.writeText(emailText).then(() => {
+                    button.style.backgroundColor = '#003d80';
+                    setTimeout(() => {
+                        button.style.backgroundColor = '#007BFF';
+                    }, 1600);
+                });
+            }
+        </script>
 
-            const formData = new FormData(this);
-            const responseMessage = document.getElementById("response-message");
-
-            fetch("scripts/email.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                responseMessage.style.display = "block";
-                if (data.includes("Thank you")) { 
-                    responseMessage.innerText = "Thank you for reaching out! I will get back to you soon.";
-                    responseMessage.style.color = "green";
-                    this.reset(); // Clear form
-                } else {
-                    responseMessage.innerText = "There was an error sending your message. Please try again later.";
-                    responseMessage.style.color = "red";
-                }
-            })
-            .catch(error => {
-                responseMessage.style.display = "block";
-                responseMessage.innerText = "There was a problem submitting the form. Please try again later.";
-                responseMessage.style.color = "red";
-                console.error("Error:", error);
-            });
-        });
-    </script>
     </body>
 </html>
 
