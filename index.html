@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Website Poggies</title>
+        <link rel="stylesheet" href="styles/header.css">
+        <link rel="stylesheet" href="styles/footer.css">
+
+        <link rel="stylesheet" href="styles/animations/spin.css">
+        <link rel="stylesheet" href="styles/animations/colorChange.css">
+
+        <style>
+
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                background-color: #f0f0f0;
+                color: #333;
+            }
+
+            body.dark-mode {
+                background-color: #333;
+                color: #f0f0f0;
+            }
+
+            .animate .title {
+                animation: spin 3s linear infinite;    
+            }
+
+            .animate .colorChangeChar {
+                animation: colorChange 3s linear infinite;
+            }
+
+            .title {
+              font-size: 3em;
+              font-family: Arial, sans-serif;
+              color: #333;
+            }
+
+            .dark-mode .title{
+                color: #f0f0f0;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                flex-direction: column;
+                flex-grow: 1;
+                padding-top: 60px;
+                padding: 20px;
+            }
+
+            .text-content {
+                margin-top: 20px;
+                text-align: center;
+                max-width: 600px;
+            }
+            .text-content p {
+                margin: 10px 0;
+                line-height: 1.5;
+            }
+
+          </style>
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="logo">Website</div>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+        </header>
+
+        <div class="container">
+            <div class="title" id="title">
+                <span class="colorChangeChar">H</span>
+                <span class="colorChangeChar">E</span>
+                <span class="colorChangeChar">L</span>
+                <span class="colorChangeChar">L</span>
+                <span class="colorChangeChar">O</span>
+                <span class="colorChangeChar">,</span>
+                <span class="colorChangeChar"> </span>
+                <span class="colorChangeChar">W</span>
+                <span class="colorChangeChar">O</span>
+                <span class="colorChangeChar">R</span>
+                <span class="colorChangeChar">L</span>
+                <span class="colorChangeChar">D</span>
+            </div>
+        </div>
+
+        <div class="text-content">
+            <p>This is the first paragraph of text on the page. It provides some introduction or information about the website.</p>
+            <p>Here is the second paragraph, offering additional details or context. You can add as much text as you need to explain your content.</p>
+            <p>Finally, this is the third paragraph. Feel free to modify the text to suit your website's needs!</p>
+        </div>
+
+        <footer class="footer">
+            <div class="toggle-container">
+                <input type="checkbox" id="toggleAnimation">
+                <label for="toggleAnimation">Animate Title</label>
+            </div>
+            <p>&copy; 2024 Website Poggies. All Rights Reserved</p>
+            <button id="darkModeToggle">Enable Dark Mode</button>
+        </footer>
+
+        <script type="text/javascript" src="scripts/togglehandler.js"></script>
+        <script type="text/javascript" src="scripts/darkmode.js"></script>
+
+    </body>
+</html>

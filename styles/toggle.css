@@ -1,0 +1,42 @@
+.toggle-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .toggle-container label {
+    margin-left: 10px;
+    color: white;
+    font-size: 1em;
+  }
+
+  .toggle-container input[type="checkbox"] {
+    width: 50px;
+    height: 25px;
+    appearance: none;
+    background: #555;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s;
+  }
+
+  .toggle-container input[type="checkbox"]:checked {
+    background: #4caf50;
+  }
+
+  .toggle-container input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+
+  .toggle-container input[type="checkbox"]:checked::before {
+    transform: translateX(25px);
+  }
