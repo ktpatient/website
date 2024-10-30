@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Replace with your actual email address
-    $to = "your-email@example.com";
+    $to = "pppp.patient@gmail.com";
     $subject = "New Contact Form Submission";
 
     // Collect and sanitize the input data
