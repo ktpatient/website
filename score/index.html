@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Wonders Score Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .score-table-container {
+            width: 90%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 0px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            color: white;
+        }
+
+        .player {
+            width: 80px;
+        }
+
+        /* Column Colors */
+        .military {
+            background-color: #e74c3c;
+            width: 80px;
+        }
+
+        .military input {
+            color: #222;
+            background-color: #ff5c5c;
+        }
+
+        .coins {
+            background-color: #f39c12;
+            width: 80px;
+        }
+
+        .coins input {
+            color: #222;
+            background-color: #ffac32;
+        }
+
+        .debt {
+            background-color: #6e5e43;
+            width: 80px;
+        }
+
+        .debt input {
+            color: #222;
+            background-color: #8e7e63;
+        }
+
+        .wonder-stages {
+            background-color: #1abc9c;
+            width: 80px;
+        }
+
+        .wonder-stages input {
+            color: #222;
+            background-color: #3adcac;
+        }
+
+        .civilian {
+            background-color: #3498db;
+            width: 80px;
+        }
+
+        .civilian input {
+            color: #222;
+            background-color: #54a8fb;
+        }
+
+        .commercial {
+            background-color: #f1c40f;
+            width: 80px;
+        }
+
+        .commercial input {
+            color: #222;
+            background-color: #ffe43f;
+        }
+
+        .guilds {
+            background-color: #9b59b6;
+            width: 80px;
+        }
+
+        .guilds input {
+            color: #222;
+            background-color: #ab79d6;
+        }
+
+        .science {
+            background-color: #2ecc71;
+            width: 80px;
+        }
+
+        .science input {
+            color: #222;
+            background-color: #4efc91;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 90%;
+            padding: 5px;
+            border: 0px solid;
+            border-radius: 4px;
+        }
+
+        /* For Chrome, Safari, and Edge */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* For Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+
+        .total-score {
+            font-weight: bold;
+            color: #333;
+            width: 80px;
+        }
+
+        #scoreTable th img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .calculate-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .calculate-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .calculate-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .add-player-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .add-player-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .add-player-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="score-table-container">
+        <h1>7 Wonders Score Tracker</h1>
+        <div class="button-container">
+            <button class="calculate-btn" onclick="calculateScores()">Calculate Scores</button>
+        </div>
+        <table id="scoreTable">
+            <thead>
+                <tr>
+                    <th class="player"><img src="resources/person.png" alt="Person" title="Person"></th>
+                    <th class="military"><img src="resources/military.png" alt="Military" title="Military"></th>
+                    <th class="coins"><img src="resources/coin.png" alt="Coins" title="Coins"></th>
+                    <th class="debt"><img src="resources/coin.png" alt="Debt" title="Debt"></th>
+                    <th class="wonder-stages"><img src="resources/wonder.png" alt="Wonder Stages" title="Wonder Stages">
+                    </th>
+                    <th class="civilian"><img src="resources/civilian.png" alt="Civilian" title="Civilian"></th>
+                    <th class="commercial"><img src="resources/commerce.png" alt="Commercial" title="Commercial"></th>
+                    <th class="guilds"><img src="resources/guild.png" alt="Guilds" title="Guilds"></th>
+                    <th class="science"><img src="resources/science.png" alt="Science" title="Science"></th>
+                    <th class="score"><img src="resources/score.png" alt="Score" title="Score"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="player-name" placeholder="Player Name" value="Player 1"></td>
+                    <td class="military"><input type="text" class="militaryTokens" placeholder="Military Score"></td>
+                    <td class="coins"><input type="number" class="coins" placeholder="Total Coins"></td>
+                    <td class="debt"><input type="number" class="debt" placeholder="Total Debt"></td>
+                    <td class="wonder-stages"><input type="text" class="wonderStages" placeholder="Wonder Board Score">
+                    </td>
+                    <td class="civilian"><input type="text" class="civilianBuildings" placeholder="Civilian Score"></td>
+                    <td class="commercial"><input type="text" class="commercialBuildings" placeholder="Commerce Score">
+                    </td>
+                    <td class="guilds"><input type="text" class="guilds-input" placeholder="Guild Score"></td>
+                    <td class="science">
+                        <input type="number" class="science" placeholder="Tablets">
+                        <input type="number" class="science" placeholder="Cogs">
+                        <input type="number" class="science" placeholder="Compasses">
+                        <input type="number" class="science" placeholder="Wilds">
+                    </td>
+                    <td class="total-score">0</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button class="add-player-btn" onclick="addPlayer()">Add Player</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
