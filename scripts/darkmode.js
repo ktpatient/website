@@ -4,6 +4,10 @@ if (localStorage.getItem("dark-mode-enabled") === "true" ){
     darkModeIcon.textContent = "light_mode";
 }
 
+document.getElementById("darkModeToggle").addEventListener("click", ()=>{
+    toggleDarkMode();
+});
+
 function toggleDarkMode() {
     const darkModeIcon = document.getElementById("darkModeIcon");
     document.body.classList.toggle("dark-mode");
