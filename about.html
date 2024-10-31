@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="styles/animations/spin.css">
         <link rel="stylesheet" href="styles/animations/colorChange.css">
 
+        <!-- Material Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -124,7 +127,9 @@
 
         <footer class="footer">
             <p>&copy; 2024 Kit Patient. All Rights Reserved</p>
-            <button id="darkModeToggle">Enable Dark Mode</button>
+            <button id="darkModeToggle" onclick="toggleDarkMode()">
+                <span class="material-icons" id="darkModeIcon">dark_mode</span>
+            </button>
         </footer>
 
         <script type="text/javascript" src="scripts/darkmode.js"></script>
